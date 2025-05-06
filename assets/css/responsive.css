@@ -1,0 +1,61 @@
+@media screen and (max-width: 1023px) {
+    .text-hero {
+        padding: 0px 30px 0px 30px;
+
+    }
+
+    .hero-cloud {
+        width: 100%;
+        height: 65%;
+        object-fit: contain;
+    }
+
+    .star-left {
+        top: 30vw;
+        left: 6vw;
+    }
+
+    .star-right {
+        bottom: 72vw;
+        right: 3vw;
+    }
+
+    
+}
+
+@media screen and (max-width: 768px) {
+    .star-left {
+        top: 30vw;
+        left: 6vw;
+    }
+
+    .star-right {
+        bottom: 62vw;
+        right: 5vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .text-hero {
+        transform: translateY(-10%);
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #countdown div {
+        padding: 0px 5px 0px 5px;
+    }
+
+    .star-left {
+        top: -3vw;
+        left: -10vw;
+    }
+    
+    .star-right {
+        bottom: 66vw;
+        right: -5vw;
+    }
+}

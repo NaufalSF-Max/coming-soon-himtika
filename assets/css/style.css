@@ -11,82 +11,275 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
-.container {
-    background: linear-gradient(180deg, #220153 0%, #0F0123 100%);
-  width: 100%;
-  height: 100%;
+
+/* Preloader */
+
+@keyframes gearAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.content {
-    position: relative;
+.preloader{ 
+	position:fixed; 
+	left:0px; 
+	top:0px; 
+	width:100%; 
+	height:100%; 
+	z-index:999999; 
+	background-color:rgba(0,0,0,0); 
+} 
+
+.preloader .icon{ 
+	position:fixed; 
+	left:0px; 
+	top:0px; 
+	width:100%; 
+	height:100%; 
+	z-index:1; 
+	background-color:rgba(0,0,0,0); 
+	background-position:center center; 
+	background-repeat:no-repeat; 
+	background-image:url(../img/icon/gear\ full\ 9.svg);
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+	animation: 2s gearAnimation linear infinite;
+} 
+
+.preloader .other-icon{ 
+	position:fixed; 
+	left:0px; 
+	top:0px; 
+	width:100%; 
+	height:100%; 
+	z-index:2; 
+	background-color:rgba(0,0,0,0); 
+	background-position:center center; 
+	background-repeat:no-repeat; 
+	background-image:url(../img/icon/rebuild\ tanpa\ gear.svg);
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+	margin-left: 8px;
+} 
+
+.page-loaded .preloader .icon,
+.page-loaded .preloader .other-icon{
+	opacity:0; 
+}
+
+.preloader:before{
+	content:'';
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:#ffffff;
+	z-index:0; 
+	-webkit-transform:translateX(0%);
+	-ms-transform:translateX(0%);
+	transform:translateX(0%);
+	-webkit-transition: all 800ms ease;
+	-moz-transition: all 800ms ease;
+	-ms-transition: all 800ms ease;
+	-o-transition: all 800ms ease;
+	transition: all 800ms ease;
+}
+
+.page-loaded .preloader:before{
+	-webkit-transform:translateX(-101%);
+	-ms-transform:translateX(-101%);
+	transform:translateX(-101%);
+}
+
+.preloader:after{
+	content:'';
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:#252742;
+	z-index:2; 
+	-webkit-transform:translateX(101%);
+	-ms-transform:translateX(101%);
+	transform:translateX(101%);
+	-webkit-transition: all 800ms ease;
+	-moz-transition: all 800ms ease;
+	-ms-transition: all 800ms ease;
+	-o-transition: all 800ms ease;
+	transition: all 800ms ease;
+}
+
+.page-loaded .preloader:after{
+	-webkit-transform:translateX(-101%);
+	-ms-transform:translateX(-101%);
+	transform:translateX(-101%);
+}
+
+/*========= HERO SECTION =========*/
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(180deg, #220153 0%, #0f0123 100%);
+  z-index: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-container .text-hero {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  border: 2px solid #fffdef;
+  align-self: stretch;
+  z-index: 1;
 }
 
-.logo {
+.kabinet {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
-.logo img {
-  width: 78.04px;
-  height: 78.04px;
-  flex-shrink: 0;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+.kabinet img {
+  width: 20%;
+  height: 20%;
+  object-fit: cover;
+  z-index: -1;
 }
 
-.logo-text {
-  font-family: "Belanosima";
+.kabinet span {
+  color: #fff;
+  font-size: clamp(10px, 5vw, 33px);
   font-style: normal;
   font-weight: 400;
-  font-size: 25px;
-  line-height: 27px;
+  line-height: normal;
+}
+
+.star-left {
+  position: absolute;
+  top: 10vw;
+  left: 15vw;
+  z-index: -1;
+  width: 41px;
+  height: 61px;
+  flex-shrink: 0;
+}
+
+.star-right {
+  position: absolute;
+  bottom: 23vw;
+  right: 15vw;
+  z-index: -1;
+  width: 41px;
+  height: 61px;
+  flex-shrink: 0;
+}
+
+.hero-cloud {
+  position: absolute;
+  flex-shrink: 0;
+  z-index: -1;
+  bottom: 0;
+}
+
+.hero-cloud img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.text-content {
+  padding: 0;
+  margin: 0;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  color: #ffffff;
+  z-index: 1; /* Ensure the text is above the background */
 }
 
-.text h1 {
-font-family: 'Belanosima';
-font-style: normal;
-font-weight: 400;
-font-size: clamp(50px, 10vw, 100px);
-line-height: 165px;
-display: flex;
-align-items: center;
-background: linear-gradient(180.34deg, #49B5DB 42.1%, #9274FF 82.11%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-text-fill-color: transparent;
-text-shadow: 0px 0px 102.9px rgba(255, 255, 255, 0.4);
+.title {
+  text-shadow: 0px 0px 102.9px rgba(255, 255, 255, 0.4);
+  font-size: clamp(11.5vh, 10vw, 150px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background: linear-gradient(180deg, #49b5db 42.1%, #9274ff 82.11%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
 }
 
-.countdown {
-  font-size: 28px;
+.title2 {
+  color: #fff;
+  font-family: Belanosima;
+  font-size: clamp(3.5vh, 5vw, 40px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.countdown-timer {
+  margin-top: 20px;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+}
+
+#countdown {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+}
+
+#countdown div {
+  padding: 10px 15px;
+  border-radius: 10px;
+  min-width: 60px;
+}
+
+#countdown span:first-child {
+  display: block;
+  font-weight: 700;
+  font-size: clamp(0.5rem, 5vw, 2rem);
 }
 
 /* Button */
-
-.btn-kembali {
-}
-
 button {
   position: relative;
+  margin-top: 30px;
   padding: 12px 35px;
-  font-size: 17px;
-  font-weight: 500;
-  color: #181818;
+  color: #110c0c;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   border-radius: 25px;
   background: linear-gradient(180deg, #57cdff 0%, #9078ff 89.78%);
-  box-shadow: 0 0 0 #fec1958c;
+  box-shadow: 0 0 0 #57cdff;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -159,8 +352,8 @@ button {
 
 button:hover {
   background: transparent;
-  color: #fec195;
-  box-shadow: 0 0 25px #fec1958c;
+  color: #57cdff;
+  box-shadow: 0 0 25px #57cdff;
 }
 
 button:hover .star-1 {
@@ -227,49 +420,77 @@ button:hover .star-6 {
   fill: #fffdef;
 }
 
-.cloud-element {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: auto;
-  z-index: 2;
-  border: 2px solid black;
-}
-
-.cloud-left {
+.social-icon-box-style2 {
   position: absolute;
-  justify-items: end;
-  bottom: 0;
-  width: 100%;
+  bottom: 40px;
+  left: 0;
+  z-index: 3;
+}
+.social-icons-style2 {
+  padding: 12px 0px 12px 100px;
+  border-radius: 1px 35px 35px 1px;
+  background: linear-gradient(
+    90deg,
+    var(--birmud, #402dae) 0%,
+    var(--ungmud, #bd63d1) 100%
+  );
+  position: relative;
+}
+.social-icons-style2 .top-line {
+  position: absolute;
+  top: -8px;
+  left: -10px;
+  height: 50px;
+  width: 90%;
+  background-color: transparent;
+  border: 2px solid #fff;
   z-index: -1;
+  border-radius: 0 50px 50px 0;
+}
+.social-icons-style2 .bottom-line {
+  position: absolute;
+  bottom: -8px;
+  left: -10px;
+  height: 50px;
+  width: 95%;
+  background-color: transparent;
+  border: 2px solid #fff;
+  z-index: -1;
+  border-radius: 0 50px 50px 0;
 }
 
-.cloud-left img {
-  opacity: 1;
-    position: relative;
-
+.social-icons li {
+  display: inline-block;
+  margin: 0px 46px 0px -40px;
 }
 
-.cloud-right {
-    position: absolute;
-    bottom: 0;
-    z-index: 1;
-    border: 4px solid black;
+.social-icons li a {
+  display: block;
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+  text-align: center;
+  transition: all 0.3s;
+  border-radius: 50%;
+}
+.social-icons li a i {
+  color: black;
+  transition: all 0.3s;
+}
+.social-icons li a:hover {
+  border-color: transparent;
+  background-color: white;
+  border-color: black;
+}
+.social-icons li a:hover i {
+  color: black;
+}
+.social-icons li a.active {
+  border-color: transparent;
+  background-color: black;
 }
 
-.cloud-right img {
-    position: relative;
-    opacity: 1;
-}
-
-.socials {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.socials img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
+/* ========= END HERO SECTION ========= */
